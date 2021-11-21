@@ -1,24 +1,21 @@
 /*
-* Print Board:  to print the Go Board
+    Authors : 1) Dinesh Gawas
+              2) Rutu Shinde
+    Program for : GO Game
+    Date created :  November 2021 
 */
 
 #include <iomanip>
-#include<iostream>
+#include <iostream>
 #include <string>
+#include "printBoard.h"
 using namespace std;
 
-class PrintBoard{
-  //attr
-  private:
-        int boardSize=9;      //board dm 9x9	
-  public:
-	    int i,j,row,col;
-	    const string alpha ="ABCDEFGHJI";
-	    void displayBoard();
-};
+
 
 void PrintBoard::displayBoard()
 {
+  const string alpha ="ABCDEFGHJI";
 	 /* -------------------------------------------------
     * to print the first line of alphabets 
     * ----------------------------------------------------*/
@@ -101,6 +98,7 @@ void PrintBoard::displayBoard()
 		         <<setw(8);   // will display char at ith index
         cout.put(cout.widen('\n'));
         cout.flush();	//request all characters written to the controlled sequence.	
-}
+
+}//end of displayBoard 
 
 
