@@ -5,14 +5,18 @@
     Date created :  November 2021 
 */
 
-#include <iomanip>
+#include <iomanip>   //to use set width; setw()
 #include <iostream>
 #include <string>
 #include "printBoard.h"
 using namespace std;
 
 
+//constructor
+PrintBoard::PrintBoard(const char emptyCell, const char player1, const char player2)
+  :emptyCellBox(emptyCell), player1Stone(player1), player2Stone(player2){}
 
+// to display the board
 void PrintBoard::displayBoard()
 {
   const string alpha ="ABCDEFGHJI";
