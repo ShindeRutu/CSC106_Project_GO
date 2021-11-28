@@ -10,7 +10,7 @@
 using namespace std;
 
 //to check if cell is occupied or no
-bool Cell::isOccupied(){
+bool Cell::isOccupied()const{
     return this->cellOccupied;
 }
 
@@ -43,7 +43,7 @@ Player* Cell::possesion(Player* newPlayer)
 //-------------------------------------
 
 
-bool Cell::belongsTo( Player* p)
+bool Cell::belongsTo( const Player* p)const
 {
     return this->playerOwned == p;
 }

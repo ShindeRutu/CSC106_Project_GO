@@ -5,34 +5,42 @@
     Date created :  November 2021 
 */
 
-#ifndef CELL_H
-#define CELL_H
+#ifndef BOARD_H
+#define BOARD_H
+  
+  #include <vector>
+  #include "printBoard.h"
+  #include "player.h"
+  #include "cell.h"
 
-class Board{
+  class Board
+  {
     friend class Printer;
-public:
+    
+    private:
+      int size;
+      std::vector< std::vector<Cell > > table;
+      int occupiedCells;
 
-    Board(int size);
-    ~Board();
+      Cell& getCell(const int row,const int col);
+    
+    public:
+     
+      Board(int size);  //constructor
+      ~Board();     //destructor
+      
 
-    bool    playAt        (const int row, const int col, Player* p);
-    Player* removeStone   (const int row, const int col);
-    int     countStonesFor(const Player* p);
+      //methods
 
-    bool isCellOccupied   (const int row, const int col);
-    bool isCellOwnedBy    (const int row, const int col, const Player* p);
-    bool isEmpty          ()const;
-    bool isFull           ()const;
+      bool playAt(const int row, const int col, Player* p);   //stone placemnet
+      Player* removeStone (const int row, const int col);     // to remove captured stones
+      int  countStonesFor(const Player* p);   // to count the stones of respective players
+      bool isCellOccupied(const int row, const int col);
+      bool isCellOwnedBy(const int row, const int col, const Player* p);
+      bool isEmpty()const;
+      bool isFull()const;
+      int getSize()const;
 
-    int getSize           ()const;
+   }; //class Board
 
-
-private:
-    int size;
-    std::vector< std::vector<Cell> > table;
-    int occupiedCells;
-
-    Cell& getCell(const int row,const int col);
-};
-
-#endif
+#endif //BOARD_H

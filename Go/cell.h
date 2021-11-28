@@ -11,6 +11,7 @@
   
   #include "player.h" 
   #include "printBoard.h" 
+  #include "board.h"
  //#include "board.h" 
 
   class Cell
@@ -35,24 +36,24 @@
         ~Cell(){} // destructor
         
         //methods
-        bool isOccupied();  // to check is cell is occupied
+        bool isOccupied()const;  // to check is cell is occupied
         bool occupy(Player *p);  // to occupy the cell or to place the stone by the ___ player
         Player* possesion(Player *newPlayer);  // to change the turn/possesionof the playes
-        bool  belongsTo(Player *p);
+        bool  belongsTo(const Player *p)const;
         void free() ; // to make the cell free
        
         //to access private members
-        int getRow()
+        int getRow()const
         {
           return row_coordinate;
         }
 
-        int getCol()
+        int getCol()const
         {
           return column_coordinate;
         }
 
-        Player*  getPlayerOwned()
+        Player*  getPlayerOwned()const
         {
           return playerOwned;
         } 
