@@ -8,13 +8,13 @@
 #include <iomanip>
 #include<iostream>
 #include <string>
-#include "printBoard.h"
+#include "printer.h"
 using namespace std;
 
 int main()
 {
   
-	PrintBoard pb; //objct creation
+	Printer pb; //objct creation
 	pb.displayBoard();
 	
 	cout<<endl<<endl;

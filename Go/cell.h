@@ -10,7 +10,7 @@
 #define CELL_H
   
   #include "player.h" 
-  #include "printBoard.h" 
+  #include "printer.h" 
   #include "board.h"
  //#include "board.h" 
 

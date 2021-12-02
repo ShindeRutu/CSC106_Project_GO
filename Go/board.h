@@ -9,7 +9,7 @@
 #define BOARD_H
   
   #include <vector>
-  #include "printBoard.h"
+  #include "printer.h"
   #include "player.h"
   #include "cell.h"
 
