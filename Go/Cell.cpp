@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include "cell.h"
+
 using namespace std;
 
 //to check if cell is occupied or no

@@ -9,17 +9,19 @@
 #define BOARD_H
   
   #include <vector>
-  #include "printer.h"
-  #include "player.h"
-  #include "cell.h"
+  /* Vectors are same as dynamic arrays with the ability to resize itself automatically when an element is inserted or deleted, with their storage being handled automatically by the container.*/
+  #include"printer.h"
+  #include"player.h"
+  #include"cell.h"
 
   class Board
   {
     friend class Printer;
-    
+    friend class Cell;   //new modific 
+	
     private:
       int size;
-      std::vector< std::vector<Cell > > table;
+      std::vector< std::vector<Cell > > table; // we crt a vector table of type Cell
       int occupiedCells;
 
       Cell& getCell(const int row,const int col);

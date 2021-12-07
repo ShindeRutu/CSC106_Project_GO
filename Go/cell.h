@@ -8,7 +8,7 @@
 
 #ifndef CELL_H
 #define CELL_H
-  
+  #include <vector>
   #include "player.h" 
   #include "printer.h" 
   #include "board.h"

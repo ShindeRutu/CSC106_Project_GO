@@ -17,7 +17,7 @@ Board::Board(int size):size(size), occupiedCells(0)
   table = vector< vector<Cell> >();
   for (int i=0; i<size; i++)
   {
-    table.push_back(vector<Cell>());
+    table.push_back(vector<Cell>()); //it will push the element into a vector from the back
     for (int j=0; j<size; j++)
     {
       table[i].push_back( Cell(i,j) );
