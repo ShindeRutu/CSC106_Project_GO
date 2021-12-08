@@ -12,8 +12,7 @@
   #include "player.h" 
   #include "printer.h" 
   #include "board.h"
- //#include "board.h" 
-
+ 
   class Cell
   {
     //attr
@@ -25,20 +24,21 @@
     public:
 	      
         //constructor
-        Cell(int rowNo, int colAlpha)
+       /* Cell(int rowNo, int colNo)
         {
           row_coordinate = rowNo;        //set row No
           column_coordinate = colAlpha;  //initialize col lettr eg:  Ath col nd 3rd row
           cellOccupied = false;  // initially all cells r nt occupied
           playerOwned = NULL;  // intialy no position
-        }
-
+        }*/
+		Cell(int rowNo, int colNo):row_coordinate(rowNo), column_coordinate(colNo),cellOccupied(false),playerOwned(NULL){}
+		
         ~Cell(){} // destructor
         
         //methods
         bool isOccupied()const;  // to check is cell is occupied
         bool occupy(Player *p);  // to occupy the cell or to place the stone by the ___ player
-        Player* possesion(Player *newPlayer);  // to change the turn/possesionof the playes
+        Player* changePossession(Player *newPlayer);  // to change the turn/possesionof the playes
         bool  belongsTo(const Player *p)const;
         void free() ; // to make the cell free
        

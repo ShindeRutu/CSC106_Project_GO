@@ -33,8 +33,8 @@ bool Cell::occupy(Player* player)
 
 //----------------------------------------------
 
-//to change the players possesion
-Player* Cell::possesion(Player* newPlayer)
+//to change the players Possesion
+Player* Cell::changePossession(Player* newPlayer)
 {
     Player* oldPlayer = this->playerOwned;  
     this->occupy(newPlayer);
@@ -44,7 +44,7 @@ Player* Cell::possesion(Player* newPlayer)
 //-------------------------------------
 
 
-bool Cell::belongsTo( const Player* p)const
+bool Cell::belongsTo(const Player* p)const
 {
     return this->playerOwned == p;
 }

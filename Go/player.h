@@ -15,7 +15,7 @@
 
   class Player
   {
-    private: 
+    
       string playerName; // to store player name  
    
     public:
@@ -31,9 +31,15 @@
       string getName()const{return this->playerName;} // access private member
 
       // to change the players turn   
-      bool operator == (const Player &other){ return (this == &other); } 
-      bool operator != (const Player &other){ return !(*this == other); }
+      bool operator == (const Player &other)
+	  { 
+		  return (this == &other); 
+	  } 
 
+      bool operator != (const Player &other)
+	  { 
+		  return !(*this == other); 
+	  }
   };
 
 

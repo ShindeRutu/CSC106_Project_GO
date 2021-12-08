@@ -11,11 +11,26 @@
 #include "printer.h"
 using namespace std;
 
-int main()
+int main(int argc, char *argv[])
 {
-  
-	Printer pb; //objct creation
-	pb.displayBoard();
+	int boardSize = 9; //dimensions: 9x9
+    //objct creation
+	Printer pb = Printer();
+	Player *player1 = new Player(), *player2 = new Player();
+    Board board = Board(boardSize);
+
+	//pb.displayBoard();
+    board.playAt(0,0, player1);
+	pb.displayBoard(board, player1);
+    cout<<endl<<endl;
+
+    board.playAt(4,5, player2);
+	pb.displayBoard(board, player2);
+    cout<<endl<<endl;
+
+    board.playAt(6,7, player1);
+	pb.displayBoard(board, player1);
+    cout<<endl<<endl;
 	
 	cout<<endl<<endl;
 	return 0;
