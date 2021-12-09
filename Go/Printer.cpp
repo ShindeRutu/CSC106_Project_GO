@@ -5,7 +5,7 @@
     Date created :  November 2021 
 */
 
-//#include <iomanip>   //to use set width; setw()
+#include <iomanip>   //to use set width; setw()
 #include <iostream>
 #include <string>
 #include "printer.h"
@@ -19,93 +19,95 @@ Printer::Printer(const char emptyCell, const char player1, const char player2):e
 // to display the board
 void Printer::displayBoard(Board& board, const Player* player1)
 {
-  const string colNums ="123456789";
-  int boardSize = board.size;
+	int boardSize = board.size;
+	int i,j,col,row;
 
-  /* -------------------------------------------------
-   * to print the first line of colum numbers
-   * ----------------------------------------------------*/
-   
-    // to get the 1st line of Nums in center of console
-	for(col=0; col< boardSize/10+2; col++)
-        cout <<"\t";         //setw() to provide field width 
-	for (col =0; col< boardSize; col++)
-        cout << colNums.at(col) 
-		        <<"\t";   // will display char at ith index
-    cout.put(cout.widen('\n'));
-    cout.flush();	//request all characters written to the controlled sequence.
-    
-	// to print + -------+
-	for(i=0; i<boardSize/10+1; i++)   
-	    cout <<"\t";
-	cout<<" +";   // prints "+" at the first pos 
+	//to print the header line :
+	//clf: count line formatting //cl count line
+	for(i=0; i<boardSize/10+2; i++)
+		cout <<setw(15);   //for formatting
+	for(col=1; col<=boardSize; col++)
+		cout << col <<setw(6);   // to print the column numbers
 	
-	for (i=0; i<boardSize*2; i++)   //for loop "boardSize*3 + 4" is adjusted as per display 
-		cout << "--";  // prints --
-	cout <<"-+";   // prints "+" at the last pos 
 	cout.put(cout.widen('\n'));
-    cout.flush();	
+	cout.flush();
 
-   /* ---------------------------------------------------------
-    * to print the coordinates intersection(.)
-    * -----------------------------------------------------*/
-   
-	for(i=1; i<=boardSize; i++)
+    //to print +---------------+
+	for(i=0; i<boardSize/10+1; i++)
+		cout<<setw(10);
+	cout<<"+";
+
+	//boardSize*7-6 : adjusted acording to console
+	for(i=0; i<boardSize*7-6; i++)    
+		cout<<"-";
+	cout<<"+";
+
+	cout.put(cout.widen('\n'));
+	cout.flush();
+    //cout<<"2nd flush";
+
+	// to print border and row nums
+	for(j=0; j<boardSize; j++)
 	{
-		// to porint row numbers : left side
-		for(row=1; row<boardSize/10-i/10; row++)
-            cout<<"\t";
-        cout<<"\t"
-			<< i 
-			<< "| ";
-        
-		// to print the stones
-        for(j=0;j<boardSize; j++)
-        {
-			//cout <<setw(4);
-			           //<<"___.____";   //adjusted as per the console
-			Cell c = board.getCell(i,j);
+		//printing row num at left side
+		//row count working = crw
+		for(row=0; row<=boardSize/10-j/10; row++)
+			cout<<setw(8); //formatting
+		//cout<<"rcw";
+		cout <<setw(10) <<"|"<< setw(58)<<"|"<<endl;
+		cout <<setw(9) << j+1 <<"|";
+		//cout<<"rw";  // rw= row working
+
+		//placing the stones , empty cells
+		for (int k =0; k<boardSize; k++)
+		{
+			//cout<<"pw";  //pw= placment wrking
+			Cell c = board.getCell(j,k);
+
 			if(!c.isOccupied())
-				cout<<"\t"<< this->emptyCellBox;
-			else if (c.getPlayerOwned() == player1)
-				cout <<"\t"<<this->player1Stone;
+				cout<<setw(5) << this->emptyCellBox;
+			
+			else if(c.getPlayerOwned() == player1)
+				cout <<setw(5) << this->player1Stone;
+			
 			else 
-				cout<<"\t"<<this->player2Stone;
-			cout<<" ";
-		}//inner for loop
+				cout<<setw(5) << this-> player2Stone;
+			cout <<" ";
+		}
+
+        //cout <<"wap";  //wrking aftr placement=  wap
+		//printing row num at right side
+		cout <<setw(4) <<"|" <<j;
         
-		// to porint row numbers : right side
-        cout<< " |"
-		    << i;
-        cout.put(cout.widen('\n'));
-        cout.flush();
-	}//outer for loop
+		cout.put(cout.widen('\n'));
+		cout.flush();
+		//cout<<"3rd flush";
+	}//for loop 
     
-	/* ---------------------------------------------
-    * to print the last line of  "+--------------+" and the column Nums
-    * -----------------------------------------*/
-	cout<<"outer line"<<endl;
-	// to print + -------+
-	for(i=0; i<boardSize/10+1; i++)   
-	      cout <<"  ";
-	cout<<"+";   // prints "+" at the first pos 
+	//cout<<"footer";
+	// To print the footer 
+	// to print +------------+
+	for(i=0; i<boardSize/10+1; i++)
+		cout<<setw(10);
+	cout<<"+";
+
+	// boardSize*7-6 : adjusted acording to console
+	for(i=0; i<boardSize*7-6; i++)   
+		cout<<"-";
+	cout<<"+";
 	
-	for (i=0; i<boardSize; i++)   //for loop "boardSize*3 + 4" is adjusted as per display 
-	      cout << "--";  // prints --
-	cout <<"+";   // prints "+" at the last pos 
+
 	cout.put(cout.widen('\n'));
     cout.flush();
-		
-	//to print the column Numbers(last line)
-	for(col=0; col< boardSize/10+2; col++)
-        cout <<" ";         //setw() to provide field width 
-	
-	for (col =0; col< boardSize; col++)
-        cout << colNums.at(col) 
-		     <<"  ";   // will display char at ith index
-    cout.put(cout.widen('\n'));
-    cout.flush();	//request all characters written to the controlled sequence.	
 
-}//end of displayBoard 
+	//col num line  //clf: count line formatting //cl count line
+	for(i=0; i<boardSize/10+2; i++)
+		cout <<setw(15);   //for formatting
+	for(col=1; col<=boardSize; col++)
+		cout << col <<setw(6);   // to print the column numbers
+	
+	cout.put(cout.widen('\n'));
+    cout.flush();
+ } //class end
 
 

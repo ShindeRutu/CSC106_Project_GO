@@ -12,7 +12,7 @@
   /* Vectors are same as dynamic arrays with the ability to resize itself automatically when an element is inserted or deleted, with their storage being handled automatically by the container.*/
   #include"printer.h"
   #include"player.h"
-  //#include"cell.h"
+  
   
  /*********************************************/
    class Cell
@@ -33,35 +33,26 @@
           cellOccupied = false;  // initially all cells r nt occupied
           playerOwned = NULL;  // intialy no position
         }*/
-		Cell(int rowNo, int colNo):row_coordinate(rowNo), column_coordinate(colNo),cellOccupied(false),playerOwned(NULL){}
+		Cell(int rowNo, int colNo)
+			:row_coordinate(rowNo), column_coordinate(colNo),cellOccupied(false),playerOwned(NULL){}
 		
         ~Cell(){} // destructor
         
+        // to acess members
+		int  getRow ()const;
+        int  getCol ()const;
+        Player* getPlayerOwned ()const;
+		
         //methods
         bool isOccupied()const;  // to check is cell is occupied
-        bool occupy(Player *p);  // to occupy the cell or to place the stone by the ___ player
+        bool occupy(Player *player);  // to occupy the cell or to place the stone by the ___ player
         Player* changePossession(Player *newPlayer);  // to change the turn/possesionof the playes
-        bool  belongsTo(const Player *p)const;
+        bool  belongsTo(const Player *player)const;
         void free() ; // to make the cell free
-       
-        //to access private members
-        int getRow()const
-        {
-          return row_coordinate;
-        }
-
-        int getCol()const
-        {
-          return column_coordinate;
-        }
-
-        Player*  getPlayerOwned()const
-        {
-          return playerOwned;
-        } 
     
     }; //class cell
 	
+
   /*******************************/
   class Board
   {
@@ -85,10 +76,10 @@
       bool isFull()const;
       int getSize()const;
 	  bool isCellOccupied(const int row, const int col);
-      bool isCellOwnedBy(const int row, const int col, const Player* p);
-      bool playAt(const int row, const int col, Player* p);   //stone placemnet
+      bool isCellOwnedBy(const int row, const int col, const Player* player);
+      bool playAt(const int row, const int col, Player* player);   //stone placemnet
       Player* removeStone (const int row, const int col);     // to remove captured stones
-      int  countStonesFor(const Player* p);   // to count the stones of respective players
+      int  countStonesFor(const Player* player);   // to count the stones of respective players
    }; //class Board
 
 #endif //BOARD_H

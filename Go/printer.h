@@ -9,34 +9,29 @@
 #ifndef Printer_H
 #define Printer_H
 
-  #include "player.h"
- // #include "cell.h"
-  #include "board.h"
+  	#include "player.h"
+  	#include "board.h"
   
-  class Board;
-  
+  	class Board;
+	
+	class Printer
+  	{
+    	//attr
+    	private: 
+      		char emptyCellBox;    // to replresent emprty cell
+     		char player1Stone;    // to represnet black stone
+      		char player2Stone;    // to represent white stone
 
-  class Printer
-  {
-    //attr
-    private:
-      //int boardSize=9;      //board dm 9x9	
-      char emptyCellBox;       // to replresent emprty cell
-      char player1Stone;    // to represnet black stone
-      char player2Stone;    // to represent white stone
-
-    public:
-	    int i,j,row,col;
-	   
-	    //constructor
-    	Printer(const char emptyCell = '.',const char player1 = 'x',const char player2 = 'o');
+    	public:
+	  
+	    	//constructor
+    		Printer(const char emptyCell = '.',const char player1 = 'x',const char player2 = 'o');
       
-      	//destructor
-     	~Printer(){}
+      		//destructor
+     		~Printer(){}
  
-	  	//method to display/print the board
-     	 void displayBoard(Board& board, const Player* player1);    
-  
-  };  //class Printer
+	  		//method to display/print the board
+     	 	void displayBoard(Board& board, const Player* player1); 
+	};  //class Printer
 
 #endif //Printer_H

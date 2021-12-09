@@ -1,5 +1,19 @@
 {
   "files": {
+    "Go/Printer.cpp": [
+      {
+        "id": "546e9bba-6294-46ea-a489-6b77764961cb",
+        "line": 17,
+        "version": 2928,
+        "index": 272
+      },
+      {
+        "id": "bb7d3e7f-1622-427b-b65b-6bb82e719cde",
+        "line": 20,
+        "version": 2928,
+        "index": 448
+      }
+    ],
     "Go/board.h.gch": [
       {
         "id": "bf29b6c6-d489-4594-96bb-668ee84bec19",

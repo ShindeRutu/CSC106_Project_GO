@@ -9,38 +9,42 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-  #include <string>
+    #include <string>
+	using namespace std;
 
-  using namespace std;
-
-  class Player
-  {
+    class Player
+    {
     
-      string playerName; // to store player name  
+      	string playerName; // to store player name  
    
-    public:
+    	public:
   
-      Player()  //constructor
-        :playerName(""){}
+      		Player()  //constructor
+        		:playerName(""){}
 
-      Player(const string name) //parametarised constructor (public)
-        :playerName(name){}
+			//parametarised constructor (public)
+      		Player(const string name) 
+        		:playerName(name){}
 
-      ~Player(){}    //destructor
+      		~Player(){}    //destructor
+      
+	  		// access private member
+      		string getName()const
+	  		{
+		  		return this->playerName;
+	  		} 
 
-      string getName()const{return this->playerName;} // access private member
+      		// to change the players turn   
+      		bool operator == (const Player &other)
+	  		{ 
+		  		return (this == &other); 
+	  		} 
 
-      // to change the players turn   
-      bool operator == (const Player &other)
-	  { 
-		  return (this == &other); 
-	  } 
-
-      bool operator != (const Player &other)
-	  { 
-		  return !(*this == other); 
-	  }
-  };
+      		bool operator != (const Player &other)
+	  		{ 
+		  		return !(*this == other); 
+	  		}
+ 	};
 
 
 #endif // PLAYER_H

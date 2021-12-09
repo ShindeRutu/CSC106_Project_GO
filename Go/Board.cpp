@@ -6,20 +6,34 @@
 */
 
 #include <iostream>
-#include <string.h>
 #include "board.h"
-
 using namespace std;
 
+//to access private members
+int Cell::getRow()const
+{
+    return this->row_coordinate;
+}
+
+int Cell::getCol()const
+{
+    return this->column_coordinate;
+}
+
+Player* Cell::getPlayerOwned()const
+{
+    return playerOwned;
+} 
+
+
 //methods of cell class
-//Cell class
-//to check if cell is occupied or no
-bool Cell::isOccupied()const{
+
+bool Cell::isOccupied()const  //to check if cell is occupied or no
+{
     return this->cellOccupied;
 }
 
 //---------------------------------------
-
 //to place the stone on the cell
 bool Cell::occupy(Player* player)
 {
@@ -35,7 +49,6 @@ bool Cell::occupy(Player* player)
 }
 
 //----------------------------------------------
-
 //to change the players Possesion
 Player* Cell::changePossession(Player* newPlayer)
 {
@@ -44,17 +57,14 @@ Player* Cell::changePossession(Player* newPlayer)
     return oldPlayer;   // may be NULL
 }
 
-//-------------------------------------
-
-
-bool Cell::belongsTo(const Player* p)const
+//------------------------------------
+bool Cell::belongsTo(const Player* player)const
 {
-    return this->playerOwned == p;
+    return this->playerOwned == player;
 }
 
 //---------------------------------
-// to make the cell free
-void Cell::free()
+void Cell::free()  // to make the cell free
 {
   this->cellOccupied = false;
   this->playerOwned = NULL;
@@ -64,18 +74,19 @@ void Cell::free()
 /*****************************/
 //methods of board class
 //constructor
-Board::Board(int size):size(size), occupiedCells(0)
+Board::Board(int size)
+	:size(size), occupiedCells(0)
 {
-  table = vector<vector<Cell>>();
-  for (int i=0; i<size; i++)
-  {
-    table.push_back(vector<Cell>()); //it will push the element into a vector from the back
-    for (int j=0; j<size; j++)
+ 	table = vector<vector<Cell>>();
+    for (int i=0; i<size; i++) //1st loop
     {
-      table[i].push_back( Cell(i,j) );
-    }
-  }
-}
+    	table.push_back(vector<Cell>()); //it will push the element into a vector from the back
+    	for (int j=0; j<size; j++)   //2nd loop
+    	{
+      		table[i].push_back( Cell(i,j) );
+    	} //3rd loop
+    }//2nd loop
+}//constructor
 
 //destructor
 Board::~Board(){}
@@ -88,14 +99,20 @@ int Board::getSize()const
 //-----------------------------
 bool Board::isFull()const
 {
-   return occupiedCells==size*size;
+   return occupiedCells == size*size;
 }
 //-------------------------
 bool Board::isEmpty()const
 {
-   return occupiedCells==0;
+   return occupiedCells == 0;
 }
 //---------------------------
+Cell& Board::getCell(const int row,const int col)
+{
+    Cell& c = table[row][col];
+    return c;
+}
+//---------------------
 bool Board::isCellOwnedBy(const int row, const int col, const Player *p)
 {
   return getCell(row,col).belongsTo(p);
@@ -106,34 +123,28 @@ bool Board::isCellOccupied(const int row, const int col)
     return getCell(row,col).isOccupied();
 }
 //----------------------------------
-Cell& Board::getCell(const int row,const int col)
-{
-    Cell& c = table[row][col];
-    return c;
-}
-//---------------------
 
 
 //to count the num os stones fr ech player
 int Board::countStonesFor(const Player *p)
 {
-  int count=0;
-  for (int row=0; row<size; row++)
-  {
-    for (int col=0; col<size; col++)
+  	int count=0;
+
+  	for (int row=0; row<size; row++)//1st loop
     {
-      if (getCell(row,col).belongsTo(p))
-      {
-        count++;
-      }
-    }
-  }
+    	for (int col=0; col<size; col++)//2nd loop
+    	{
+      		if (getCell(row,col).belongsTo(p))
+      		{
+        		count++;
+      		}//if loop
+    	}//2nd loop
+  	}//1st loop
     return count;
-}
+}//coutStonesFor
+
 
 //-----------------------
-
-
 // to remove the captured stones
 Player* Board::removeStone(const int row, const int col)
 {
@@ -151,12 +162,13 @@ bool Board::playAt(const int row, const int col, Player* p)
 
     if (c.isOccupied())
     {
-      return false;
-    }
+       return false;
+    }//if
+
     else
     {
-      c.occupy(p);
-      return true;
-    }
-}
+       c.occupy(p);
+       return true;
+    }//else
+}//playAt
 
