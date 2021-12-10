@@ -17,11 +17,22 @@
     
 	class Winner
 	{
+				
+		//if player says pass over: then 
+		
 		/*
-		*method: a. to count the stone : more the num of stones
-				 b. to check for pass statement : if yes then quit the game and cout the points
-				 c. count the captured/removed stones
+            method: a. to count the stone : more the num of stones
+				    c. count the captured/removed stones
+					d. declare the wiiner
 	    */
+		
+        /* a. method to remove stones from captured area:
+		* check if the surrounding stones belong to one player only... if yes check fr liberty : if liberty count = 1, then remove the stones... 
+		*/
+
+		/* c. method to count the stones
+		* call the method fromj board class providing player name :  count StonesFor()
+       */
 
 	}
 	

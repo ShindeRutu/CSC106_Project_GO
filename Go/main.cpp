@@ -15,47 +15,82 @@ using namespace std;
 int main(int argc, char *argv[])
 {
 	int boardSize = 9; //dimensions: 9x9
-    int row,col;
-	string  pass;
+    int row,col,choice;
+	int player1Move=1, player2Move =1, i=1;
+	string  pass,player1Name,player2Name;
 
 	//objct creation
-	Board board = Board(boardSize);
+	Board b = Board(boardSize);
 	Player  *player1 = new Player(), 
 			*player2 = new Player();
-	Printer pb = Printer();
+	Printer p = Printer();
 	
 	// to print the header of the game:
-	cout <<endl; 
-	cout <<setw(50)<<"******************************"<<setw(50)
-	     <<endl <<setw(50) <<"\tGO GAME\t" <<endl
-		 <<setw(50)<<"******************************"
-		 <<"\n\n\n";
-    
-	//pb.displayBoard(board,playe);
-	//1st move by player1
-    /*board.playAt(0,0, player1);
-	pb.displayBoard(board, player1);
-    cout<<endl<<endl;
-    
-	//2nd move by player2
-    board.playAt(0,2, player2);
-	pb.displayBoard(board, player2);
-    cout<<endl<<endl;
-    
-	//3rd move by player1
-    board.playAt(1,2, player1);
-	pb.displayBoard(board, player1);
-    cout<<endl<<endl;
-	*/
+	p.printHeader();
+
+	cout<<endl<<endl;
+
+	//player details
+	cout<<"Enter player1 Name: ";
+	cin>>player1Name;
+	cout<<"Enter player2 Nmae: ";
+	cin>>player2Name;
      
 	//input from the console
-	cout <<"Enter the cordinates";
-	cin>> row>>col;
-      
-	board.playAt(row,col, player1);
-	pb.displayBoard(board, player1);
-    cout<<endl<<endl; 
+	do
+	{
+		cout<<"\n1.Play a move \t2.Pass over \nEnter your choice: ";
+		cin>>choice;
 
+		switch(choice)
+		{
+			case 1: {
+						//input from player 1
+						if(i%2 != 0)
+			       		{
+					   		cout <<"\n"<<player1Name<<" enter the cordinates for move num "<<player1Move<<" : "<<endl;
+					   		cin>> row>>col;
+							/*
+							* check if cell is alrdy occupied :
+							  if yes then display illegal move else place the stone.
+							* check fr liberty illegal move
+							*/ 
+					   		b.playAt(row,col, player1);
+					   		p.displayBoard(b, player1);
+							player1Move++;
+    				   		cout<<endl<<endl; 		   
+				   		}
+                          
+						//input from player 2
+				   		else if(i%2 ==0)
+				   		{
+							   cout <<"\n"<<player2Name<<" enter the cordinates for move num "<<player2Move<<" :  "<<endl;
+					   			cin>> row>>col;
+								/*
+								 * check if cell is alrdy occupied :
+							       if yes then display illegal move else place the stone
+								 * check fr liberty illegal move
+							    */ 
+					   			b.playAt(row,col, player2);
+					   			p.displayBoard(b, player2);
+								player2Move++;
+    				   			cout<<endl<<endl;
+						} 	
+						i++;			
+					}break;
+            
+			case 2: //check the for winner 
+			        cout<<"checking for winner";
+					break;
+      
+            default:  cout<<"Enter valid choice";break;
+		}//switch
+	}//do
+	while(choice!=2);
+
+		
+		
+    	
 
 	cout<<endl<<endl;
 	return 0;

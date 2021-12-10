@@ -30,8 +30,13 @@
       		//destructor
      		~Printer(){}
  
+			//to print header
+			void printHeader();
+
+			
 	  		//method to display/print the board
      	 	void displayBoard(Board& board, const Player* player1); 
+			
 	};  //class Printer
 
 #endif //Printer_H
