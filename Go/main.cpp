@@ -81,6 +81,9 @@ int main(int argc, char *argv[])
             
 			case 2: //check the for winner 
 			        cout<<"checking for winner";
+					b.countStonesFor(player1);
+					b.countStonesFor(player2);
+					//cout<<count;
 					break;
       
             default:  cout<<"Enter valid choice";break;

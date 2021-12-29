@@ -140,6 +140,7 @@ int Board::countStonesFor(const Player *p)
       		}//if loop
     	}//2nd loop
   	}//1st loop
+	  cout<<count;
     return count;
 }//coutStonesFor
 
