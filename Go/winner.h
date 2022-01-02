@@ -15,9 +15,13 @@
 
 	using namespace std;
     
+	class Borad;
+	class Printer;
+
 	class Winner
 	{
-				
+		
+			
 		//if player says pass over: then 
 		
 		/*
@@ -33,8 +37,10 @@
 		/* c. method to count the stones
 		* call the method fromj board class providing player name :  count StonesFor()
        */
+	   public: 
+	   void stoneCount(const Player *p1,const Player *p2);
 
-	}
+	};
 	
 
 #endif //WINNER_H

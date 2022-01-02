@@ -6,10 +6,11 @@
 */
 
 #include <iomanip> //for setw()
-#include<iostream>
+#include <iostream>
 #include "board.h"
 #include "player.h"
 #include "printer.h"
+#include "winner.h"
 using namespace std;
 
 int main(int argc, char *argv[])
@@ -21,13 +22,11 @@ int main(int argc, char *argv[])
 
 	//objct creation
 	Board b = Board(boardSize);
-	Player  *player1 = new Player(), 
-			*player2 = new Player();
 	Printer p = Printer();
+	Winner w= Winner();
 	
 	// to print the header of the game:
 	p.printHeader();
-
 	cout<<endl<<endl;
 
 	//player details
@@ -35,6 +34,9 @@ int main(int argc, char *argv[])
 	cin>>player1Name;
 	cout<<"Enter player2 Nmae: ";
 	cin>>player2Name;
+    //player objects
+	Player  *player1 = new Player(player1Name), 
+			*player2 = new Player(player2Name);
      
 	//input from the console
 	do
@@ -48,17 +50,20 @@ int main(int argc, char *argv[])
 						//input from player 1
 						if(i%2 != 0)
 			       		{
-					   		cout <<"\n"<<player1Name<<" enter the cordinates for move num "<<player1Move<<" : "<<endl;
+					   		cout <<"\n"<<player1->getName()<<" enter the cordinates for move num "<<player1->getName()<<" : "<<endl;
 					   		cin>> row>>col;
 							/*
-							* check if cell is alrdy occupied :
-							  if yes then display illegal move else place the stone.
 							* check fr liberty illegal move
 							*/ 
-					   		b.playAt(row,col, player1);
-					   		p.displayBoard(b, player1);
-							player1Move++;
+					   		if(b.playAt(row,col, player1))
+							{
+					   			p.displayBoard(b, player1);
+								player1Move++;
+							}
+							else
+								cout<<"\n\ncell already occupied!!!";
     				   		cout<<endl<<endl; 		   
+
 				   		}
                           
 						//input from player 2
@@ -67,23 +72,26 @@ int main(int argc, char *argv[])
 							   cout <<"\n"<<player2Name<<" enter the cordinates for move num "<<player2Move<<" :  "<<endl;
 					   			cin>> row>>col;
 								/*
-								 * check if cell is alrdy occupied :
-							       if yes then display illegal move else place the stone
 								 * check fr liberty illegal move
 							    */ 
-					   			b.playAt(row,col, player2);
-					   			p.displayBoard(b, player2);
-								player2Move++;
+					   			if(b.playAt(row,col, player2))
+								{
+					   				p.displayBoard(b, player2);
+									player2Move++;
+								}
+								else 
+									cout<<"\n\ncell already occupied!!!";
     				   			cout<<endl<<endl;
 						} 	
 						i++;			
 					}break;
             
 			case 2: //check the for winner 
-			        cout<<"checking for winner";
-					b.countStonesFor(player1);
-					b.countStonesFor(player2);
+			    	cout<<"checking for winner";
+					//cout<<"\nBlack Stone count:  "<<b.countStonesFor(player1);
+					//cout<<"\nWhite Stone count: "<<b.countStonesFor(player2);
 					//cout<<count;
+					w.stoneCount(player1, player2);
 					break;
       
             default:  cout<<"Enter valid choice";break;

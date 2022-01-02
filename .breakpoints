@@ -3,15 +3,15 @@
     "Go/Printer.cpp": [
       {
         "id": "546e9bba-6294-46ea-a489-6b77764961cb",
-        "line": 17,
-        "version": 1,
-        "index": 272
+        "line": 16,
+        "version": 5299,
+        "index": 270
       },
       {
         "id": "bb7d3e7f-1622-427b-b65b-6bb82e719cde",
-        "line": 83,
-        "version": 1,
-        "index": 1745
+        "line": 171,
+        "version": 5299,
+        "index": 3731
       }
     ],
     "Go/board.h.gch": [

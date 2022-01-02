@@ -9,5 +9,14 @@
 #include "winner.h"
 
 using namespace std;
+    
+	int boardSize=9;
+	Board b = Board(boardSize);
+	Printer p = Printer();	
 
-
+   void Winner::stoneCount(const Player* p1, const Player *p2)
+   {
+	  	cout<<"\nBlack Stone count: "<<b.countStonesFor(p1);
+					
+		cout<<"\nWhite Stone count: "<<b.countStonesFor(p2); 
+   }
