@@ -1,5 +1,13 @@
 {
   "files": {
+    ".replit": [
+      {
+        "id": "48d6848a-3155-46bc-af21-87b88b60144e",
+        "line": 2,
+        "version": 7,
+        "index": 17
+      }
+    ],
     "Go/Printer.cpp": [
       {
         "id": "546e9bba-6294-46ea-a489-6b77764961cb",
