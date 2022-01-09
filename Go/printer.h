@@ -25,7 +25,7 @@
     	public:
 	  
 	    	//constructor
-    		Printer(const char emptyCell = '.',const char player1 = 'x',const char player2 = 'o');
+    		Printer(const char emptyCell = '.',const char player1 = 'o',const char player2 = 'x');
       
       		//destructor
      		~Printer(){}

@@ -12,14 +12,22 @@
       {
         "id": "546e9bba-6294-46ea-a489-6b77764961cb",
         "line": 16,
-        "version": 5299,
+        "version": 5416,
         "index": 270
       },
       {
         "id": "bb7d3e7f-1622-427b-b65b-6bb82e719cde",
-        "line": 171,
-        "version": 5299,
-        "index": 3731
+        "line": 222,
+        "version": 5416,
+        "index": 5016
+      }
+    ],
+    "Go/Winner.o": [
+      {
+        "id": "3ec406da-56e6-498f-858b-c5672e040a21",
+        "line": 1,
+        "version": 1,
+        "index": 0
       }
     ],
     "Go/board.h.gch": [
@@ -28,6 +36,20 @@
         "line": 1,
         "version": 1,
         "index": 0
+      }
+    ],
+    "Go/main.cpp": [
+      {
+        "id": "87472e73-6d38-42ec-badb-96ba60243cba",
+        "line": 6,
+        "version": 3059,
+        "index": 123
+      },
+      {
+        "id": "3b8044b0-2429-43d2-a964-8ece85f17a31",
+        "line": 6,
+        "version": 3059,
+        "index": 123
       }
     ]
   }
