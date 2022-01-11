@@ -4,7 +4,7 @@
       {
         "id": "48d6848a-3155-46bc-af21-87b88b60144e",
         "line": 2,
-        "version": 7,
+        "version": 1,
         "index": 17
       }
     ],
@@ -12,14 +12,14 @@
       {
         "id": "546e9bba-6294-46ea-a489-6b77764961cb",
         "line": 16,
-        "version": 5416,
-        "index": 270
+        "version": 3,
+        "index": 258
       },
       {
         "id": "bb7d3e7f-1622-427b-b65b-6bb82e719cde",
-        "line": 222,
-        "version": 5416,
-        "index": 5016
+        "line": 225,
+        "version": 3,
+        "index": 5021
       }
     ],
     "Go/Winner.o": [
@@ -42,14 +42,14 @@
       {
         "id": "87472e73-6d38-42ec-badb-96ba60243cba",
         "line": 6,
-        "version": 3059,
-        "index": 123
+        "version": 87,
+        "index": 124
       },
       {
         "id": "3b8044b0-2429-43d2-a964-8ece85f17a31",
         "line": 6,
-        "version": 3059,
-        "index": 123
+        "version": 87,
+        "index": 124
       }
     ]
   }

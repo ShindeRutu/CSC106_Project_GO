@@ -14,7 +14,10 @@ using namespace std;
 
 
 //constructor
-Printer::Printer(const char emptyCell, const char player1, const char player2):emptyCellBox(emptyCell), player1Stone(player1), player2Stone(player2){}
+Printer::Printer(const char emptyCell, const char player1, const char player2):emptyCellBox(emptyCell), player1Stone(player1), player2Stone(player2)
+{
+	
+}
 
 //to print game nme
 void Printer::printHeader()

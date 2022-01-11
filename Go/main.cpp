@@ -74,7 +74,7 @@ int main(int argc, char *argv[]){
          
          			//top display
        				cout<<"\t\t+-----------------------|-----------------------+"<<endl;
-					cout<<"\t\t|  PLAYER 1\t\t|  PLAYER 2\t\t|"<<endl;
+					cout<<"\t\t|  PLAYER 1\t\t\t\t|  PLAYER 2\t\t\t\t|"<<endl;
 					cout<<"\t\t|  Black Stones [o]:"<<blackStones<<"\t|  White Stones [x]:"
 						<<whiteStones<<"\t|"<<endl;
 					cout<<"\t\t|  Stones Captured:"<<bCap<<"\t|  Stones Captured:"
@@ -95,7 +95,7 @@ int main(int argc, char *argv[]){
 					}
 		
 					switch(choice){
-						case 1://we cn play until blackstones !=181 nd white stones !=180
+						case 1: //we cn play until blackstones !=181 nd white stones !=180
 						       {
 								//input from player 1
 								if(i%2 != 0){
